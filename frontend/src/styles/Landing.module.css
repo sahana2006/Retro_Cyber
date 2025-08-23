@@ -1,0 +1,66 @@
+/* Fullscreen container */
+.landingContainer {
+  background-color: #1a001f;
+  color: #e20a8f; /* Neon green */
+  height: 100vh;
+  width: 100vw; /* FULL width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+  text-align: center;
+  overflow: hidden; /* prevents scrollbars */
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.retroHeader h1 {
+  font-size: 3rem;
+  text-shadow: 0px 0px 10px#595066, 0px 0px 20px #b5a075;
+  margin-bottom: 15px;
+}
+
+.retroHeader p {
+  font-size: 1.2rem;
+  color: #d9db6e; /* Neon pink */
+  text-shadow: 0px 0px 5px #dcc4e0;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+/* Buttons */
+.retroButtons {
+  display: flex;
+  gap: 30px;
+}
+
+.retroBtn {
+  background: transparent;
+  border: 2px solid #c87adf;
+  color: #d5d529;
+  padding: 12px 30px;
+  font-size: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #6614ff;
+  transition: all 0.3s ease-in-out;
+}
+
+.retroBtn:hover {
+  background-color: #d5cf78;
+  color: #4d067c;
+  font-weight: bold;
+  box-shadow: 0 0 20px #c87cd9, 0 0 40px #d38fd9;
+}
+
+/* Footer */
+.retroFooter {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+  width: 100%;
+}

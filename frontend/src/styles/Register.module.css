@@ -1,0 +1,91 @@
+.registerContainer {
+  background-color: #1a001f; /* dark purple background */
+  margin: 0;
+  font-family: "Press Start 2P", cursive; /* retro pixel font */
+  color: #e0b3ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerBox {
+  background: linear-gradient(145deg, #2d0030, #1a001f);
+  border: 2px solid #8000ff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0px 0px 20px #8000ff;
+  animation: flicker 2s infinite alternate;
+}
+
+.registerBox h2 {
+  margin-bottom: 20px;
+  color: #c77dff;
+  text-shadow: 0 0 8px #ff00ff;
+}
+
+.registerBox input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #2d0030;
+  border: 2px solid #8000ff;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.registerBox input:focus {
+  border-color: #ff00ff;
+  box-shadow: 0 0 10px #ff00ff;
+}
+
+.retroBtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #8000ff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0px 0px 15px #ff00ff;
+  transition: 0.3s;
+}
+
+.retroBtn:hover {
+  background: #ff00ff;
+  box-shadow: 0px 0px 25px #ff33cc;
+}
+
+.altLink {
+  font-weight: 500;
+  font-size: larger;
+  color: #dbcddb;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.altLink a {
+  color: #b184e8;
+  text-decoration: none;
+}
+
+.altLink a:hover {
+  text-shadow: 0 0 5px #dbcddb;
+}
+
+/* Flicker effect */
+@keyframes flicker {
+  from {
+    box-shadow: 0px 0px 15px #8000ff;
+  }
+  to {
+    box-shadow: 0px 0px 25px #ff00ff;
+  }
+}
