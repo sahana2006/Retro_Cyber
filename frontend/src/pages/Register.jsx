@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import styles from "../styles/Register.module.css"; // Import as styles
 import { Link } from "react-router-dom";
 import apiClient from "../api/apiClient";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -25,6 +27,7 @@ const RegistrationPage = () => {
       const response = await apiClient.post("/accounts/register/", formData);
       console.log("✅ Registration successful:", response.data);
       alert("User registered successfully!");
+      navigate("/login"); // Redirect to login page after successful registration
     } catch (error) {
       if (error.response) {
         console.error("❌ Registration failed:", error.response.data);
