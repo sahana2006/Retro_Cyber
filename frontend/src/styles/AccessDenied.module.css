@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: radial-gradient(circle at top, #0a0a0f, #000);
+  min-height: 100vh;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+}
+
+.title {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #ff00ff;
+  text-shadow: 0 0 8px #ff00ff, 0 0 16px #ff33ff, 0 0 24px #ff66ff;
+  margin-top: 10px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 80px;
+}
+
+.card {
+  background: rgba(15, 15, 30, 0.9);
+  border: 2px solid #00e5ff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px #00e5ff, 0 0 20px #009dff;
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: #ff00ff;
+  box-shadow: 0 0 12px #ff00ff, 0 0 24px #ff33ff;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  color: #00ffe0;
+  text-shadow: 0 0 6px #00ffe0, 0 0 14px #00b8ff;
+}
+
+.cardText {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
+
+.code {
+  font-family: "Courier New", monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  color: #ffff00;
+  text-shadow: 0 0 5px #ffff66;
+}
+
+.false {
+  color: #ff004c;
+  font-weight: bold;
+  text-shadow: 0 0 6px #ff3366, 0 0 10px #ff004c;
+}
+
+.true {
+  color: #39ff14;
+  font-weight: bold;
+  text-shadow: 0 0 6px #39ff14, 0 0 12px #00ff80;
+}
+
+.button {
+  margin-top: 2rem;
+  padding: 0.9rem 1.6rem;
+  background: #ff00ff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 0 0 6px #fff;
+  box-shadow: 0 0 8px #ff00ff, 0 0 20px #ff33ff;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.button:hover {
+  background: #00e5ff;
+  box-shadow: 0 0 12px #00e5ff, 0 0 24px #33ffff;
+  transform: scale(1.05);
+}
+
+/* Ambient neon ring */
+.glowRing {
+  position: absolute;
+  width: 60vmin;
+  height: 60vmin;
+  border-radius: 50%;
+  top: -10vmin;
+  right: -10vmin;
+  background: radial-gradient(circle, rgba(255,0,255,0.35) 0%, rgba(0,229,255,0.25) 40%, rgba(0,0,0,0) 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  animation: pulse 4s ease-in-out infinite;
+}

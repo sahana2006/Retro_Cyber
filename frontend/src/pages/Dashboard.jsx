@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Dashboard.module.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [unlocked, setUnlocked] = useState(false); // whether first unlock is done
   const [stage, setStage] = useState(0); // 0 = grid locked, 1 = one unlocked
 
@@ -58,9 +60,17 @@ const Dashboard = () => {
 
       {/* Stage 1 → Next level unlocked */}
       {stage === 1 && (
-        <div className={styles.popupCard} onClick={() => setStage(2)}>
+        <div
+          className={styles.popupCard}
+          onClick={() => {
+            // send user to wrong/fake stage first
+            navigate("/stage-2-false");
+          }}
+        >
           <i className="bi bi-brightness-high"></i>
           <p>You found the key! 🔑 Unlocking Stage 2...</p>
+          <small>(Click to proceed...)</small>
+          <div className={styles.glowRing} />
         </div>
       )}
 
