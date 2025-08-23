@@ -1,30 +1,80 @@
 /* Fullscreen container */
 .landingContainer {
-  background-color: #1a001f;
-  color: #e20a8f; /* Neon green */
+  background-color: #0d0010;
+  color: #e20a8f;
   height: 100vh;
-  width: 100vw; /* FULL width */
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+  font-family: 'Press Start 2P', 'Courier New', monospace;
   text-align: center;
-  overflow: hidden; /* prevents scrollbars */
+  overflow: hidden;
   margin: 0;
   padding: 0;
+
+  /* CRT scanline overlay */
+  position: relative;
+}
+
+.landingContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 2;
+  animation: flicker 5s infinite; /* Occasional flicker */
+}
+
+/* Glitch text */
+.glitch {
+  position: relative;
+  font-size: 3rem;
+  text-shadow: 0px 0px 10px #ff00de, 0px 0px 20px #00fff7; /* big and glowing (neon pink + cyan shadows) */
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  animation: glitchTop 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 blue;
+  animation: glitchBottom 1.5s infinite linear alternate-reverse;
 }
 
 /* Header */
 .retroHeader h1 {
-  font-size: 3rem;
-  text-shadow: 0px 0px 10px#595066, 0px 0px 20px #b5a075;
   margin-bottom: 15px;
 }
 
 .retroHeader p {
   font-size: 1.2rem;
-  color: #d9db6e; /* Neon pink */
+  color: #d9db6e;
   text-shadow: 0px 0px 5px #dcc4e0;
   margin-top: 20px;
   margin-bottom: 50px;
@@ -38,7 +88,7 @@
 
 .retroBtn {
   background: transparent;
-  border: 2px solid #c87adf;
+  border: 2px dashed #c87adf; /* ASCII box look */
   color: #d5d529;
   padding: 12px 30px;
   font-size: 1rem;
@@ -63,4 +113,30 @@
   color: #aaa;
   text-align: center;
   width: 100%;
+}
+
+/* Animations Randomly “cuts” parts of the top ghost text, making it jitter*/
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(10px, 9999px, 50px, 0); }
+  20% { clip: rect(85px, 9999px, 140px, 0); }
+  30% { clip: rect(45px, 9999px, 80px, 0); }
+  40% { clip: rect(20px, 9999px, 65px, 0); }
+  50% { clip: rect(0px, 9999px, 100px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(60px, 9999px, 100px, 0); }
+  20% { clip: rect(30px, 9999px, 60px, 0); }
+  30% { clip: rect(80px, 9999px, 120px, 0); }
+  40% { clip: rect(10px, 9999px, 40px, 0); }
+  50% { clip: rect(50px, 9999px, 90px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.7; }
 }

@@ -1,12 +1,14 @@
 import React from "react";
-import styles from "../styles/Landing.module.css"; // ✅ import as styles object
+import styles from "../styles/Landing.module.css";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
     <div className={styles.landingContainer}>
       <div className={styles.retroHeader}>
-        <h1>⚡ Retro Cyber Auth ⚡</h1>
+        <h1 className={styles.glitch} data-text="⚡ Retro Cyber Auth ⚡">
+          ⚡ Retro Cyber Auth ⚡
+        </h1>
         <p>Secure your vault with 80s hacker vibes.</p>
       </div>
 

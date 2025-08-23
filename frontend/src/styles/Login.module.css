@@ -1,0 +1,90 @@
+.loginContainer {
+  background-color: #0d0013; /* darker retro background */
+  margin: 0;
+  font-family: "Press Start 2P", cursive;
+  color: #e0b3ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBox {
+  background: linear-gradient(145deg, #20002c, #0d0013);
+  border: 2px solid #ff3399;
+  border-radius: 12px;
+  padding: 30px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0px 0px 20px #ff3399;
+}
+
+.loginBox h2 {
+  margin-bottom: 20px;
+  color: #ff66cc;
+  text-shadow: 0 0 8px #ff33cc;
+}
+
+.loginBox input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #1a001f;
+  border: 2px solid #ff3399;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.loginBox input:focus {
+  border-color: #ff66ff;
+  box-shadow: 0 0 10px #ff66ff;
+}
+
+.retroBtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #ff3399;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0px 0px 15px #ff66cc;
+  transition: 0.3s;
+}
+
+.retroBtn:hover {
+  background: #ff66ff;
+  box-shadow: 0px 0px 25px #ff99ff;
+}
+
+.altLink {
+  font-weight: 500;
+  font-size: larger;
+  color: #dbcddb;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.altLink a {
+  color: #ff99ff;
+  text-decoration: none;
+}
+
+.altLink a:hover {
+  text-shadow: 0 0 5px #dbcddb;
+}
+
+.successMsg {
+  color: #33ff99;
+  margin-top: 10px;
+}
+
+.errorMsg {
+  color: #ff6666;
+  margin-top: 10px;
+}
