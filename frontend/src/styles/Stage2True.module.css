@@ -1,0 +1,97 @@
+.container {
+  min-height: 100vh;
+  background: radial-gradient(80% 60% at 50% 0%, #161326 0%, #0a0a12 60%, #000 100%);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ff00ff;
+  text-shadow: 0 0 8px #ff00ff, 0 0 18px #ff33ff, 0 0 32px #ff66ff;
+}
+
+.card {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(12, 12, 24, 0.8);
+  border: 2px solid #00e5ff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 12px #00e5ff, 0 0 24px rgba(0, 229, 255, 0.6);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #ff00ff;
+  box-shadow: 0 0 16px #ff00ff, 0 0 30px rgba(255, 0, 255, 0.7);
+}
+
+.lead {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.sub {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  color: #d8d8ff;
+}
+
+.true {
+  color: #39ff14;
+  text-shadow: 0 0 6px #39ff14, 0 0 12px #00ff80;
+  font-weight: 700;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ff00ff, #00e5ff);
+  color: #0b0b12;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00e5ff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #00e5ff, 0 0 30px #ff00ff;
+}
+
+/* Ambient neon ring */
+.glowRing {
+  position: absolute;
+  width: 60vmin;
+  height: 60vmin;
+  border-radius: 50%;
+  top: -10vmin;
+  right: -10vmin;
+  background: radial-gradient(circle, rgba(255,0,255,0.35) 0%, rgba(0,229,255,0.25) 40%, rgba(0,0,0,0) 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.08); opacity: 0.65; }
+}

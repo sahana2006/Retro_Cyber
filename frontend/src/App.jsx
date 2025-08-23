@@ -4,6 +4,8 @@ import LandingPage from "./pages/Landing";
 import RegistrationPage from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import AccessDenied from "./pages/AccessDenied";
+import Stage2True from "./pages/Stage2True";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Route path="/register" element={<RegistrationPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/stage-2-false" element={<AccessDenied />} />
+      <Route path="/stage-2-true" element={<Stage2True />} />
     </Routes>
   );
 }
