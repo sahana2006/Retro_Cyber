@@ -33,7 +33,7 @@ const handleSubmit = async (e) => {
     localStorage.setItem("access_token", response.data.access);
 
     alert("Login successful!");
-    navigate("/home"); // or use navigate("/home") if using react-router
+    navigate("/dashboard"); // or use navigate("/home") if using react-router
   } catch (error) {
     console.error("Login failed", error);
     alert("Invalid username or password");

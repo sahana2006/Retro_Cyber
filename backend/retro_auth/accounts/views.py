@@ -20,36 +20,37 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenRefreshView
 
+# Customizing JWT Auth
 class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
+        response = super().post(request, *args, **kwargs)  # calls the original post function to generate the tokens
 
         if response.status_code == 200:
             refresh = response.data.get("refresh")
             access = response.data.get("access")
 
-            # Move refresh token to HttpOnly cookie
+            # Move refresh token to HttpOnly cookie (browser stores it, js cannot readd it)
             res = Response({"access": access})
             res.set_cookie(
                 key="refresh_token",
                 value=refresh,
-                httponly=True,
+                httponly=True, # JS cannot access the cookie; protection from XSS attacks
                 secure=not os.environ.get("DEBUG", True),  # False in dev, True in prod
                 samesite="Strict", # CSRF protection
                 max_age=7*24*60*60, # 7 days
             )
-            return res
+            return res # return response with only access token in body
         return response
 
 class CustomTokenRefreshView(TokenRefreshView):
     def post(self, request, *args, **kwargs):
-        refresh_token = request.COOKIES.get("refresh_token")
+        refresh_token = request.COOKIES.get("refresh_token") # get refresh token from HttpOnly cookie
         if refresh_token is None:
             return Response({"error": "No refresh token"}, status=400)
 
         try:
-            refresh = RefreshToken(refresh_token)
-            access_token = str(refresh.access_token)
+            refresh = RefreshToken(refresh_token) # validate the refresh token
+            access_token = str(refresh.access_token) # get new access token
             return Response({"access": access_token})
         except Exception as e:
             return Response({"error": "Invalid refresh token"}, status=400)

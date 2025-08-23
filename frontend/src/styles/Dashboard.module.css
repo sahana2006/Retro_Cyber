@@ -1,0 +1,105 @@
+.dashboard {
+  background-color: #280538;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.title {
+  color: #ff66cc;
+  text-shadow: 0 0 8px #ff33cc;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  margin-top: 3%;
+}
+
+.card {
+  background: #ce9ee4;
+  color: #333;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 500px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: not-allowed; /* locked look */
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: gray;
+}
+
+.hint {
+  color: #0d0d06;
+  text-shadow: 0 0 8px #60ce45;
+  opacity: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 1rem;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .hint {
+  opacity: 1;
+}
+
+/* Popup card (stage 1) */
+.popupCard {
+  background: linear-gradient(135deg, #ff66cc, #6600ff);
+  border-radius: 20px;
+  padding: 3rem;
+  width: 500px;
+  height: 250px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(255, 0, 200, 0.7);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.popupCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(255, 0, 200, 0.9);
+}
+
+.popupCard i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.popupCard p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: black; /* to match your screenshot text */
+}
+
+
+.secret {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: lime;
+  font-weight: bold;
+}
