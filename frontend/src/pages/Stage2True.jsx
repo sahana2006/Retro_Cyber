@@ -16,7 +16,7 @@ function Stage2True() {
           The gateway hums with neon light. Proceed when ready…
         </p>
 
-        <Link to="/final-round" className={styles.button}>
+        <Link to="/stage-3" className={styles.button}>
           ENTER FINAL ROUND →
         </Link>
       </div>

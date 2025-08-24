@@ -1,0 +1,120 @@
+.stage3Container {
+  padding: 1rem;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  color: #fff;
+  background: radial-gradient(circle at top, #0a0a0f, #000);
+  /* display: flex;
+  flex-direction: column; */
+  align-items: center;
+  min-height: 100vh;
+}
+
+.riddle {
+  font-size: 1.2rem;
+  margin-bottom: 6rem;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
+}
+
+.buttonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* exactly 3 buttons per row */
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.mazeButton {
+  width: 400px;
+  height: 150px;
+  margin-left: 40px;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 2px solid #ff00ff;
+  border-radius: 12px;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff inset;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.mazeButton:hover {
+  transform: scale(1.08) rotate(0.5deg);
+  background-color: #1a1a1a;
+  box-shadow: 0 0 25px #ff00ff, 0 0 40px #ff00ff inset;
+}
+
+.selectedButton {
+  border-color: #00ff00;
+  background-color: #111a11;
+  box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00 inset;
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
+}
+
+.text {
+  font-size: 1rem;
+  text-shadow: 0 0 3px #ff00ff, 0 0 8px #ff00ff;
+}
+
+.actionButtons {
+  margin-bottom: 1rem;
+}
+
+.resetButton {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: 2px solid #ff00ff;
+  border-radius: 12px;
+  background-color: #111;
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 0 0 3px #ff00ff;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.resetButton:hover {
+  transform: scale(1.05);
+  background-color: #222;
+  box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff inset;
+}
+
+.keyResult {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  }
+  100% {
+    text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .mazeButton {
+    padding: 1rem 0.5rem;
+  }
+  .icon {
+    font-size: 2rem;
+  }
+  .text {
+    font-size: 0.9rem;
+  }
+}

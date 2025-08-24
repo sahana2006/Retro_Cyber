@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import AccessDenied from "./pages/AccessDenied";
 import Stage2True from "./pages/Stage2True";
+import Stage3 from "./pages/Stage3";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/stage-2-false" element={<AccessDenied />} />
       <Route path="/stage-2-true" element={<Stage2True />} />
+      <Route path="/stage-3" element={<Stage3 />} />
     </Routes>
   );
 }
