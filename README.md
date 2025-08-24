@@ -31,7 +31,7 @@ The Final Secret Key – Solve all three stages, and the ultimate reward is reve
 
 ## Demonstration Video
 
-![GDG_Retro](./assets/GDG_Retro.mp4)
+[GDG_Video_Demonstration](./assets/GDG_Video_Demonstration.mp4)
 
 ## Installation & Setup
 
