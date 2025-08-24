@@ -3,28 +3,32 @@ import styles from "../styles/Dashboard.module.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useNavigate } from "react-router-dom";
 import LogoutButton from "../components/LogoutButton";
+import apiClient from "../api/apiClient";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [unlocked, setUnlocked] = useState(false); // whether first unlock is done
   const [stage, setStage] = useState(0); // 0 = grid locked, 1 = one unlocked
+  const [loading, setLoading] = useState(true);
 
   // Check if user is authenticated
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("access"); // JWT token
+      const token = localStorage.getItem("access_token");
       if (!token) {
         navigate("/login");
         return;
       }
-      // If token exists verify it with the backend
+
       try {
-        await axios.get("http://localhost:8000/api/check-auth/", {
+        await apiClient.get("/accounts/check-auth/", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setLoading(false); // Authenticated, show dashboard
+        console.log("User is authenticated");
+        setLoading(false);
       } catch (err) {
-        navigate("/login"); // Not authenticated
+        console.log("User is not authenticated", err.response?.data);
+        navigate("/login");
       }
     };
 

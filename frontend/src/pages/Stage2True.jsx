@@ -3,23 +3,23 @@ import { Link } from "react-router-dom";
 import styles from "../styles/Stage2True.module.css";
 import LogoutButton from "../components/LogoutButton";
 import { useNavigate } from "react-router-dom";
+import apiClient from "../api/apiClient";
 
 function Stage2True() {
   const navigate = useNavigate();
   // Check if user is authenticated
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("access"); // JWT token
+      const token = localStorage.getItem("access_token"); // JWT token
       if (!token) {
         navigate("/login");
         return;
       }
       // If token exists verify it with the backend
       try {
-        await axios.get("http://localhost:8000/api/check-auth/", {
+        await apiClient.get("/accounts/check-auth/", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setLoading(false); // Authenticated, show dashboard
       } catch (err) {
         navigate("/login"); // Not authenticated
       }

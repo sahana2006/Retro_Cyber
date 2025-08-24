@@ -23,28 +23,28 @@ const Login = () => {
     });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  try {
-    const response = await apiClient.post("/accounts/login/", formData);
-
-    // Store only the access token
-    localStorage.setItem("access_token", response.data.access);
-
-    setSuccess("Login successful!");
-    setError(""); // clear error
-
-    // Hide success message after 1 sec
-    setTimeout(() => navigate("/dashboard"), 2000);
-  } catch (error) {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true); // start loading
+    try {
+      const response = await apiClient.post("/accounts/login/", formData);
+    
+      // Store only the access token
+      localStorage.setItem("access_token", response.data.access);
+    
+      setSuccess("Login successful!");
+      setError(""); // clear error
+    
+      // Hide success message after 2 sec
+      setTimeout(() => navigate("/dashboard"), 2000);
+    } catch (error) {
       console.error("Login failed", error);
       setError("Invalid username or password");
       setSuccess("");
-  } finally {
-    setLoading(false);
-  }
-};
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={styles.loginContainer}>
