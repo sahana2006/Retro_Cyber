@@ -61,3 +61,15 @@ class CheckAuthView(APIView):
 
     def get(self, request):
         return Response({"authenticated": True})
+    
+class VerifySequenceView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    correct_sequence = [3, 1, 5, 2]  # keep here, or load from DB later
+
+    def post(self, request, *args, **kwargs):
+        user_sequence = request.data.get("sequence", [])
+
+        if user_sequence == self.correct_sequence:
+            return Response({"key": "SHADOW-2025"}, status=status.HTTP_200_OK)
+        return Response({"error": "Wrong sequence"}, status=status.HTTP_400_BAD_REQUEST)

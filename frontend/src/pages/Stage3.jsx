@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // if using react-router
 import styles from "../styles/Stage3.module.css";
 import LogoutButton from "../components/LogoutButton";
+import apiClient from "../api/apiClient";
 
 const Stage3 = () => {
   const navigate = useNavigate();
@@ -9,17 +10,16 @@ const Stage3 = () => {
   // Check if user is authenticated
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("access"); // JWT token
+      const token = localStorage.getItem("access_token"); // JWT token
       if (!token) {
         navigate("/login");
         return;
       }
       // If token exists verify it with the backend
       try {
-        await axios.get("http://localhost:8000/api/check-auth/", {
+        await apiClient.get("/accounts/check-auth/", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setLoading(false); // Authenticated, show dashboard
       } catch (err) {
         navigate("/login"); // Not authenticated
       }
@@ -53,27 +53,27 @@ const Stage3 = () => {
     { id: 6, icon: "bi-fire", text: "Fires leap where caution is forgotten" }, // decoy
   ];
 
-  const correctSequence = [3, 1, 5, 2]; // correct sequence
+  // const correctSequence = [3, 1, 5, 2]; // correct sequence
 
   const [userSequence, setUserSequence] = useState([]);
   const [keyResult, setKeyResult] = useState(null);
 
-  const handleClick = (id) => {
-    if (userSequence.includes(id)) return; // prevent double click
+  const handleClick = async (id) => {
+    if (userSequence.includes(id)) return;
 
     const newSequence = [...userSequence, id];
     setUserSequence(newSequence);
 
     if (newSequence.length === 4) {
-      const isCorrect = newSequence.every(
-        (val, index) => val === correctSequence[index]
-      );
-
-      setKeyResult(
-        isCorrect
-          ? "🎉 Secret Key: SHADOW-2025 🎉" // new key name
-          : "❌ Wrong sequence! Try again. ❌"
-      );
+      try {
+        const res = await apiClient.post("/accounts/verify-sequence/", {
+          sequence: newSequence,
+        });
+        setKeyResult(`🎉 Secret Key: ${res.data.key} 🎉`);
+        console.log("Correct sequence! key:", res.data.key);
+      } catch (err) {
+        setKeyResult("❌ Wrong sequence! Try again. ❌");
+      }
     }
   };
 
