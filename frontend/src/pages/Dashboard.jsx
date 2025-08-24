@@ -37,7 +37,7 @@ const Dashboard = () => {
             <span className={styles.hint}>
               {unlocked
                 ? "Click me to get the key 🔑"
-                : "The answer isn't always dark"}
+                : "Inspect what lies beneath the surface"}
             </span>
           </div>
 
