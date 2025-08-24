@@ -1,10 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // if using react-router
 import styles from "../styles/Stage3.module.css";
 import LogoutButton from "../components/LogoutButton";
 
 const Stage3 = () => {
-  const navigate = useNavigate(); // for navigating to home
+  const navigate = useNavigate();
+
+  // Check if user is authenticated
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = localStorage.getItem("access"); // JWT token
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+      // If token exists verify it with the backend
+      try {
+        await axios.get("http://localhost:8000/api/check-auth/", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setLoading(false); // Authenticated, show dashboard
+      } catch (err) {
+        navigate("/login"); // Not authenticated
+      }
+    };
+
+    checkAuth();
+  }, [navigate]);
+
   const buttons = [
     {
       id: 1,
