@@ -13,7 +13,7 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,11 +32,17 @@ const handleSubmit = async (e) => {
     // Store only the access token
     localStorage.setItem("access_token", response.data.access);
 
-    alert("Login successful!");
-    navigate("/dashboard"); // or use navigate("/home") if using react-router
+    setSuccess("Login successful!");
+    setError(""); // clear error
+
+    // Hide success message after 1 sec
+    setTimeout(() => navigate("/dashboard"), 2000);
   } catch (error) {
-    console.error("Login failed", error);
-    alert("Invalid username or password");
+      console.error("Login failed", error);
+      setError("Invalid username or password");
+      setSuccess("");
+  } finally {
+    setLoading(false);
   }
 };
 
@@ -44,6 +50,10 @@ const handleSubmit = async (e) => {
     <div className={styles.loginContainer}>
       <div className={styles.loginBox}>
         <h2>Login</h2>
+
+        {error && <p className={styles.errorMsg}>{error}</p>}
+        {success && <p className={styles.successMsg}>{success}</p>}
+
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -65,13 +75,10 @@ const handleSubmit = async (e) => {
           <button className={styles.retroBtn} type="submit" disabled={loading}>
             {loading ? "Logging in..." : "Login"}
           </button>
-
-          {success && <p className={styles.successMsg}>Login successful!</p>}
-          {error && <p className={styles.errorMsg}>{error}</p>}
         </form>
 
         <p className={styles.altLink}>
-          Don’t have an account? <a href="/register">Register</a>
+          Don't have an account? <a href="/register">Register</a>
         </p>
       </div>
     </div>

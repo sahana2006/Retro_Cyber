@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // if using react-router
 import styles from "../styles/Stage3.module.css";
+import LogoutButton from "../components/LogoutButton";
 
 const Stage3 = () => {
   const navigate = useNavigate(); // for navigating to home
@@ -64,10 +65,17 @@ const Stage3 = () => {
 
   return (
     <div className={styles.stage3Container}>
-      <h2>LAST-LEVEL-SECRET</h2>
-      <p className={styles.riddle}>
-        Start your journey by choosing the 4 buttons in the right order.
-      </p>
+      <div className={styles.headerContainer}>
+        <div className={styles.textBlock}>
+          <h2>LAST-LEVEL-SECRET</h2>
+          <p className={styles.riddle}>
+            Start your journey by choosing the 4 buttons in the right order.
+          </p>
+        </div>
+        <div className={styles.logoutWrapper}>
+          <LogoutButton redirectTo="/login" />
+        </div>
+      </div>
 
       <div className={styles.buttonsGrid}>
         {buttons.map((btn) => (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Dashboard.module.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from "../components/LogoutButton";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -22,9 +23,14 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboard}>
-      <h1 className={styles.title}>
-        <i className="bi bi-lock-fill"></i> Escape Dashboard
-      </h1>
+      <div className={styles.headerContainer}>
+        <h1 className={styles.title}>
+          <i className="bi bi-lock-fill"></i> Escape Dashboard
+        </h1>
+        <div className={styles.logoutWrapper}>
+          <LogoutButton redirectTo="/login" />
+        </div>
+      </div>
 
       {stage === 0 && (
         <div className={styles.grid}>

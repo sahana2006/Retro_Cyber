@@ -10,6 +10,28 @@
   min-height: 100vh;
 }
 
+.headerContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
+  text-align: center;   /* center the inner text block */
+}
+
+/* h2 + p stacked */
+.textBlock {
+  display: inline-block;     /* keeps h2+p together */
+  text-align: center;        /* center inside block */
+}
+.logoutWrapper {
+  position: absolute;
+  margin: 0;
+  top: 0;       /* push to top */
+  right: 20px;     /* push to right */
+  padding: 1rem;
+}
+
 .riddle {
   font-size: 1.2rem;
   margin-bottom: 6rem;
