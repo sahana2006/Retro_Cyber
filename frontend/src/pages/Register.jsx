@@ -13,6 +13,8 @@ const RegistrationPage = () => {
     confirm_password: "",
   });
 
+    const [success, setSuccess] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -26,8 +28,8 @@ const RegistrationPage = () => {
     try {
       const response = await apiClient.post("/accounts/register/", formData);
       console.log("✅ Registration successful:", response.data);
-      alert("User registered successfully!");
-      navigate("/login"); // Redirect to login page after successful registration
+      setSuccess("User registered successfully!");
+      setTimeout(() => navigate("/login"), 2000); // Redirect to login page after successful registration
     } catch (error) {
       if (error.response) {
         console.error("❌ Registration failed:", error.response.data);
@@ -40,6 +42,9 @@ const RegistrationPage = () => {
     <div className={styles.registerContainer}>
       <div className={styles.registerBox}>
         <h2 className={styles.heading}>🔐 Register</h2>
+
+        {success && <p className={styles.successMsg}>{success}</p>}
+
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
             type="text"

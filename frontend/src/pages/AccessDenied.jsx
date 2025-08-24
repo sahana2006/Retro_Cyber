@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/AccessDenied.module.css";
+import LogoutButton from "../components/LogoutButton";
 
 function AccessDenied() {
   const navigate = useNavigate();
@@ -11,8 +12,13 @@ function AccessDenied() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>🚫 ACCESS DENIED 🚫</h1>
-
+      {/* <h1 className={styles.title}>🚫 ACCESS DENIED 🚫</h1> */}
+      <div className={styles.headerContainer}>
+        <h1 className={styles.title}> 🚫 ACCESS DENIED 🚫 </h1>
+        <div className={styles.logoutWrapper}>
+          <LogoutButton redirectTo="/login" />
+        </div>
+      </div>
       <div className={styles.cardGrid}>
         {/* Card 1 */}
         <div className={styles.card}>
@@ -27,8 +33,8 @@ function AccessDenied() {
         <div className={styles.card}>
           <h2 className={styles.cardTitle}>Clue 2</h2>
           <p className={styles.cardText}>
-            This road is a <span className={styles.false}>lie</span>. Seek
-            the path that speaks <span className={styles.true}>truth</span>.
+            This road is a <span className={styles.false}>lie</span>. Seek the
+            path that speaks <span className={styles.true}>truth</span>.
           </p>
         </div>
       </div>

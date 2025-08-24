@@ -44,7 +44,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
 class CustomTokenRefreshView(TokenRefreshView):
     def post(self, request, *args, **kwargs):
-        refresh_token = request.COOKIES.get("refresh_token") # get refresh token from HttpOnly cookie
+        refresh_token = request.COOKIES.get("refresh_token") or request.data.get("refresh") # get refresh token from HttpOnly cookie
         if refresh_token is None:
             return Response({"error": "No refresh token"}, status=400)
 

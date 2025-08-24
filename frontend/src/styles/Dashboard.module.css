@@ -5,11 +5,25 @@
   text-align: center;
 }
 
+.headerContainer {
+  position: relative;
+  margin-bottom: 2rem;
+  text-align: center; /* centers the title */
+}
+
 .title {
+  font-size: 2.5rem;
   color: #ff00ff;
   text-shadow: 0 0 8px #ff00ff, 0 0 18px #ff33ff, 0 0 32px #ff66ff;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.logoutWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0rem; /* optional spacing from edges */
 }
 
 .grid {

@@ -9,15 +9,30 @@
   font-family: "Arial", sans-serif;
 }
 
+.headerContainer {
+  display: flex;
+  justify-content: space-between;  /* pushes title left, logout right */
+  align-items: center;             /* vertically aligns both */
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 900px;                /* keep it consistent with card width */
+}
+
+
 .title {
   font-size: 2.8rem;
-  margin-bottom: 2rem;
+  margin: 10px auto 2rem auto;  /* top margin + bottom spacing */
   text-align: center;
   color: #ff00ff;
   text-shadow: 0 0 8px #ff00ff, 0 0 16px #ff33ff, 0 0 24px #ff66ff;
-  margin-top: 10px;
 }
 
+.logoutWrapper {
+  position: absolute;      /* pins logout independently */
+  top: 0;
+  right: 0;
+  padding: 2.4rem;           /* space from edges */
+}
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

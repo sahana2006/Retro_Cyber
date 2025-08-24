@@ -1,0 +1,20 @@
+.neonButton {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: 2px solid #00ffff;  /* blue */
+  border-radius: 12px;
+  background-color: #111;
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff inset;
+  transition: all 0.2s ease-in-out;
+}
+
+.neonButton:hover {
+  color: #00ffff;
+  background-color: #001a1a;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #66ffff;
+  box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff inset, 0 0 40px #66ffff;
+  transform: scale(1.05) rotate(-1deg);
+}

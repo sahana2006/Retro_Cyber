@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/Stage2True.module.css";
+import LogoutButton from "../components/LogoutButton";
 
 function Stage2True() {
   return (
     <div className={styles.container}>
+      <div className={styles.logoutWrapper}>
+        <LogoutButton redirectTo="/login" />
+      </div>
       <h1 className={styles.title}>STAGE 2 COMPLETED</h1>
 
       <div className={styles.card}>

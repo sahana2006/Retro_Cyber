@@ -80,11 +80,19 @@
 }
 
 .successMsg {
-  color: #33ff99;
-  margin-top: 10px;
+  color: #39ff14;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem;
+  text-shadow: 0 0 6px #39ff14, 0 0 12px #00ff80;
+  animation: fadeInOut 1s ease-in-out;
 }
 
 .errorMsg {
-  color: #ff6666;
-  margin-top: 10px;
+  color: #ff004c;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem;
+  text-shadow: 0 0 6px #ff3366, 0 0 12px #ff004c;
+  animation: fadeInOut 1s ease-in-out;
 }
