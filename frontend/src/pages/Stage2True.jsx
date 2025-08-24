@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/Stage2True.module.css";
 import LogoutButton from "../components/LogoutButton";
+import { useNavigate } from "react-router-dom";
 
 function Stage2True() {
+  const navigate = useNavigate();
+  // Check if user is authenticated
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = localStorage.getItem("access"); // JWT token
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+      // If token exists verify it with the backend
+      try {
+        await axios.get("http://localhost:8000/api/check-auth/", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setLoading(false); // Authenticated, show dashboard
+      } catch (err) {
+        navigate("/login"); // Not authenticated
+      }
+    };
+
+    checkAuth();
+  }, [navigate]);
+
   return (
     <div className={styles.container}>
       <div className={styles.logoutWrapper}>

@@ -54,3 +54,10 @@ class CustomTokenRefreshView(TokenRefreshView):
             return Response({"access": access_token})
         except Exception as e:
             return Response({"error": "Invalid refresh token"}, status=400)
+
+from rest_framework.permissions import IsAuthenticated
+class CheckAuthView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"authenticated": True})
